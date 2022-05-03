@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Plan extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'url',
+        'description',
+        'max_users',
+        'price',
+        'price_yearly',
+    ];
 }

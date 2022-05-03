@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('admin/plans', \App\Http\Controllers\Admin\PlanController::class, ['name' => 'admin.plans']);
 
 Route::get('/', function () {
     return view('welcome');

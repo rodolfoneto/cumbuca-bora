@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('detail_plans', function (Blueprint $table) {
             $table->id();
-
-            $table->string('title', 100);
-            $table->string('url')->unique();
-            $table->text('description')->nullable();
-            $table->unsignedInteger('max_users')->nullable();;
-            $table->decimal('price', 8, 2);
-            $table->decimal('price_yearly', 8, 2)->nullable();
+            $table->unsignedBigInteger('plan_id');
+            $table->string('description');
             $table->timestamps();
+
+            $table->foreign('plan_id')
+                ->references('id')
+                ->on('plans')
+                ->delete('cascade');
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plans');
+        Schema::dropIfExists('detail_plans');
     }
 };
